@@ -1,6 +1,6 @@
 import React, {useEffect, useRef, useState} from "react";
 import {getRandomRegion, getRegion, loadRegions, regions, setupRegions} from "../../../utilities/regions";
-import {getColor, getName, removeColor, setElementColorFadeout} from "../../../utilities/SvgUtilities";
+import {getName, setElementColorFadeout} from "../../../utilities/SvgUtilities";
 import {GameLayout} from "../../layout/GameLayout";
 import {Map} from "../../map/Map";
 import {FindAllModeScoreBoard} from "../../scoreBoards/FindAllModeScoreBoard";
@@ -41,11 +41,7 @@ export const FindAllGameMode = props => {
 
   const setupRegion = pathElement => {
     const name = getName(pathElement);
-    const color = getColor(pathElement);
 
-    if (color !== checkAnswerColor) {
-      removeColor(pathElement);
-    }
     if (name === "") {
       return;
     }
@@ -82,7 +78,7 @@ export const FindAllGameMode = props => {
     const region = event.target;
     const name = getName(region);
 
-    name === currentRegion
+    name === currentRegion.name
         ? handleCorrectAnswer(region)
         : handleWrongAnswer(region);
   };

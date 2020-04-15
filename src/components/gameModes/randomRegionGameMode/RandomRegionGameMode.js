@@ -1,6 +1,6 @@
 import React, {useEffect, useRef, useState} from "react";
 import {getRandomRegion, getRegion, loadRegions, setupRegions} from "../../../utilities/regions";
-import {getColor, getName, removeColor, setColor, setElementColorFadeout} from "../../../utilities/SvgUtilities";
+import {getName, removeColor, setColor, setElementColorFadeout} from "../../../utilities/SvgUtilities";
 import {RandomModeScoreBoard} from "../../scoreBoards/RandomModeScoreBoard";
 import {GameLayout} from "../../layout/GameLayout";
 import {Map} from "../../map/Map";
@@ -20,10 +20,6 @@ export const RandomRegionGameMode = props => {
 
   const setupRegion = pathElement => {
     const name = getName(pathElement);
-    const color = getColor(pathElement);
-    if (color !== checkAnswerColor) {
-      removeColor(pathElement);
-    }
 
     if (name === "") {
       return;
