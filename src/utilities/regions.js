@@ -1,5 +1,4 @@
 export const regions = [
-  { id: "JPN99", name: "" },
   { id: "JPN1821", name: "Hiroshima" },
   { id: "JPN1822", name: "Okayama" },
   { id: "JPN1824", name: "Shimane" },
@@ -34,19 +33,19 @@ export const regions = [
   { id: "JPN1857", name: "Kanagawa" },
   { id: "JPN1858", name: "Saitama" },
   { id: "JPN1859", name: "Tochigi" },
-  { id: "JPN1860", name: "Tokyo" },
-  { id: "JPN1861", name: "Yamanashi" },
-  { id: "JPN1862", name: "Akita" },
-  { id: "JPN1863", name: "Aomori" },
-  { id: "JPN1864", name: "Fukushima" },
-  { id: "JPN1865", name: "Iwate" },
-  { id: "JPN1866", name: "Miyagi" },
-  { id: "JPN1867", name: "Niigata" },
-  { id: "JPN1868", name: "Yamagata" },
-  { id: "JPN3500", name: "Nagasaki" },
-  { id: "JPN3501", name: "Kagoshima" }
-  //{id: "JPN3502", name: "Okinawa"},
-  //{id: "JPN3503", name: "Gunma"}
+  {id: "JPN1860", name: "Tokyo"},
+  {id: "JPN1861", name: "Yamanashi"},
+  {id: "JPN1862", name: "Akita"},
+  {id: "JPN1863", name: "Aomori"},
+  {id: "JPN1864", name: "Fukushima"},
+  {id: "JPN1865", name: "Iwate"},
+  {id: "JPN1866", name: "Miyagi"},
+  {id: "JPN1867", name: "Niigata"},
+  {id: "JPN1868", name: "Yamagata"},
+  {id: "JPN3500", name: "Nagasaki"},
+  {id: "JPN3501", name: "Kagoshima"},
+  {id: "JPN3502", name: "Okinawa"},
+  {id: "JPN3503", name: "Gunma"}
 ];
 
 export const getRegion = id => {
@@ -60,7 +59,13 @@ export const getRandomRegion = () => {
 };
 
 export const loadRegions = mapSvg => {
-  let regions = mapSvg.contentDocument.getElementsByTagName("path");
+  let regions;
+  //if doc didnt load yet --- added to fix firefox bug
+  try {
+    regions = mapSvg.contentDocument.getElementsByTagName("path");
+  } catch (e) {
+    return [];
+  }
   return regions;
 };
 
