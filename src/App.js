@@ -3,9 +3,10 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import GameContainer from "./components/gameContainer/GameContainer";
-import {RandomRegionGameMode} from "./components/gameModes/randomRegionGameMode/RandomRegionGameMode";
-import {TypeRegionGameMode} from "./components/gameModes/typeRegionGameMode/TypeRegionGameMode";
-import {FindAllGameMode} from "./components/gameModes/findAllGameMode/FindAllGameMode";
+
+import TypeRegionGameMode from "./components/gameModes/typeRegionGameMode/TypeRegionGameMode";
+import RandomRegionGameMode from "./components/gameModes/randomRegionGameMode/RandomRegionGameMode";
+import FindAllGameMode from "./components/gameModes/findAllGameMode/FindAllGameMode";
 
 class App extends Component {
   render() {

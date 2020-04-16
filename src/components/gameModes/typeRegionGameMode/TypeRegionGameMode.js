@@ -1,15 +1,12 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {getRandomRegion, loadRegions} from "../../../utilities/regions";
 import {getName, removeColor, setColor} from "../../../utilities/SvgUtilities";
-
-import {GameLayout} from "../../layout/GameLayout";
-import {Map} from "../../map/Map";
 import {TypeModeScoreBoard} from "../../scoreBoards/TypeModeScoreBoard";
+import {withMap} from "../../withMapWrapper";
 
-export const TypeRegionGameMode = props => {
+const TypeRegionGameMode = ({mapRef}) => {
   const [currentRegion, setCurrentRegion] = useState(getRandomRegion());
   const [score, setScore] = useState(0);
-  const mapRef = useRef(null);
 
   const resetTargetRegion = () => {
     setCurrentRegion(getRandomRegion());
@@ -73,10 +70,7 @@ export const TypeRegionGameMode = props => {
     }
   };
 
-  return (
-      <GameLayout>
-        <TypeModeScoreBoard score={score} onSubmit={handleAnswerSubmit}/>
-        <Map mapRef={mapRef}/>
-      </GameLayout>
-  );
+  return <TypeModeScoreBoard score={score} onSubmit={handleAnswerSubmit}/>;
 };
+
+export default withMap(TypeRegionGameMode);

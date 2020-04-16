@@ -1,18 +1,16 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {getRandomRegion, getRegion, loadRegions, setupRegions} from "../../../utilities/regions";
 import {getName, removeColor, setColor, setElementColorFadeout} from "../../../utilities/SvgUtilities";
 import {RandomModeScoreBoard} from "../../scoreBoards/RandomModeScoreBoard";
-import {GameLayout} from "../../layout/GameLayout";
-import {Map} from "../../map/Map";
+import {withMap} from "../../withMapWrapper";
 
 const checkAnswerColor = "blue";
 const correctAnswerColor = "green";
 const wrongAnswerColor = "red";
 
-export const RandomRegionGameMode = props => {
+const RandomRegionGameMode = ({mapRef}) => {
   const [currentRegion, setCurrentRegion] = useState(getRandomRegion());
   const [score, setScore] = useState(0);
-  const mapRef = useRef(null);
 
   const resetTargetRegion = () => {
     setCurrentRegion(getRandomRegion());
@@ -75,13 +73,12 @@ export const RandomRegionGameMode = props => {
   };
 
   return (
-      <GameLayout>
-        <RandomModeScoreBoard
-            score={score}
-            currentRegion={currentRegion.name}
-            onCheck={handleCheck}
-        />
-        <Map mapRef={mapRef}/>
-      </GameLayout>
+      <RandomModeScoreBoard
+          score={score}
+          currentRegion={currentRegion.name}
+          onCheck={handleCheck}
+      />
   );
 };
+
+export default withMap(RandomRegionGameMode);

@@ -1,18 +1,16 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {getRandomRegion, getRegion, loadRegions, regions, setupRegions} from "../../../utilities/regions";
 import {getName, setElementColorFadeout} from "../../../utilities/SvgUtilities";
-import {GameLayout} from "../../layout/GameLayout";
-import {Map} from "../../map/Map";
 import {FindAllModeScoreBoard} from "../../scoreBoards/FindAllModeScoreBoard";
+import {withMap} from "../../withMapWrapper";
 
 const checkAnswerColor = "blue";
 const correctAnswerColor = "green";
 const wrongAnswerColor = "red";
 
-export const FindAllGameMode = props => {
+const FindAllGameMode = ({mapRef}) => {
   const [currentRegion, setCurrentRegion] = useState(getRandomRegion());
   const [remainingRegions, setRemainingRegions] = useState(regions);
-  const mapRef = useRef(null);
 
   useEffect(() => {
     const svg = mapRef.current;
@@ -84,13 +82,11 @@ export const FindAllGameMode = props => {
   };
 
   return (
-      <GameLayout>
-        <FindAllModeScoreBoard
-            remaining={remainingRegions.length}
-            currentRegion={currentRegion.name}
-            onCheck={handleCheck}
-        />
-        <Map mapRef={mapRef}/>
-      </GameLayout>
+      <FindAllModeScoreBoard
+          remaining={remainingRegions.length}
+          currentRegion={currentRegion.name}
+          onCheck={handleCheck}
+      />
   );
 };
+export default withMap(FindAllGameMode);
