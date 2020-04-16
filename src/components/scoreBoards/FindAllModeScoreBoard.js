@@ -10,11 +10,11 @@ export const FindAllModeScoreBoard = ({
   return (
       <div
           className={
-            "d-flex flex-column justify-content-center h-100 align-items-center"
+            "h-100 d-flex flex-column justify-content-center align-items-center"
           }
       >
-        <h2>Remaining: {remaining}</h2>
-        <h2>{currentRegion}</h2>
+        <h3 className="text-center text-primary">Left: {remaining}</h3>
+        <h3 className="text-center">{currentRegion}</h3>
         <Button variant={"dark"} onClick={onCheck}>
           Check
         </Button>

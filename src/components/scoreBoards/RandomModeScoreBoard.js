@@ -10,11 +10,11 @@ export const RandomModeScoreBoard = ({
   return (
       <div
           className={
-            "d-flex flex-column justify-content-center h-100 align-items-center"
+            "h-100 d-flex flex-column justify-content-center align-items-center"
           }
       >
-        <h2>Score: {score}</h2>
-        <h2>{currentRegion}</h2>
+        <h2 className={"text-center"}>Score: {score}</h2>
+        <h2 className={"text-center"}>{currentRegion}</h2>
         <Button variant={"dark"} onClick={onCheck}>
           Check
         </Button>
